@@ -39,3 +39,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: newmoontv
           directory: .next
+          exclude:
+            - cache
+            - "**/*.map"
