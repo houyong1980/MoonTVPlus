@@ -32,6 +32,11 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Remove large files
+        run: |
+          rm -rf .next/cache
+          find .next -name "*.map" -delete
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
@@ -39,6 +44,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: newmoontv
           directory: .next
-          exclude:
-            - cache
-            - "**/*.map"
